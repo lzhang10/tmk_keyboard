@@ -92,10 +92,10 @@ OPT_DEFS += -DINTERRUPT_CONTROL_ENDPOINT
 # Build Options
 #   comment out to disable the options.
 #
-MOUSEKEY_ENABLE ?= yes	# Mouse keys
-EXTRAKEY_ENABLE ?= yes	# Media control and System control
+#MOUSEKEY_ENABLE ?= yes	# Mouse keys
+#EXTRAKEY_ENABLE ?= yes	# Media control and System control
 CONSOLE_ENABLE ?= yes	# Console for debug
-#COMMAND_ENABLE ?= yes    # Commands for debug and configuration
+COMMAND_ENABLE ?= yes    # Commands for debug and configuration
 #NKRO_ENABLE ?= yes	# USB Nkey Rollover
 
 # Boot Section Size in bytes
