@@ -49,6 +49,8 @@ TARGET_DIR ?= .
 # MCU name
 MCU ?= atmega32u4
 
+DEV = /dev/ttyACM0
+
 
 # Processor frequency.
 #     This will define a symbol, F_CPU, in all source code files equal to the
