@@ -83,6 +83,25 @@ KBDReportParser kbd_parser3;
 KBDReportParser kbd_parser4;
 
 
+const char* usb_state2str(uint8_t state) {
+  switch (state) {
+  case 0x10: return "USB_STATE_DETACHED";
+  case 0x11: return "USB_DETACHED_SUBSTATE_INITIALIZE";
+  case 0x12: return "USB_DETACHED_SUBSTATE_WAIT_FOR_DEVICE";
+  case 0x13: return "USB_DETACHED_SUBSTATE_ILLEGAL";
+  case 0x20: return "USB_ATTACHED_SUBSTATE_SETTLE";
+  case 0x30: return "USB_ATTACHED_SUBSTATE_RESET_DEVICE";
+  case 0x40: return "USB_ATTACHED_SUBSTATE_WAIT_RESET_COMPLETE";
+  case 0x50: return "USB_ATTACHED_SUBSTATE_WAIT_SOF";
+  case 0x51: return "USB_ATTACHED_SUBSTATE_WAIT_RESET";
+  case 0x60: return "USB_ATTACHED_SUBSTATE_GET_DEVICE_DESCRIPTOR_SIZE";
+  case 0x70: return "USB_STATE_ADDRESSING";
+  case 0x80: return "USB_STATE_CONFIGURING";
+  case 0x90: return "USB_STATE_RUNNING";
+  case 0xa0: return "USB_STATE_ERROR";
+  }
+  return "Unkwown USB state";
+}
 uint8_t matrix_rows(void) { return MATRIX_ROWS; }
 uint8_t matrix_cols(void) { return MATRIX_COLS; }
 bool matrix_has_ghost(void) { return false; }
@@ -99,6 +118,7 @@ void matrix_init(void) {
 static void or_report(report_keyboard_t report) {
     // integrate reports into keyboard_report
     keyboard_report.mods |= report.mods;
+    keyboard_report.reserved |= report.reserved;
     for (uint8_t i = 0; i < KEYBOARD_REPORT_KEYS; i++) {
         if (IS_ANY(report.keys[i])) {
             for (uint8_t j = 0; j < KEYBOARD_REPORT_KEYS; j++) {
@@ -137,7 +157,7 @@ uint8_t matrix_scan(void) {
 
         matrix_is_mod = true;
 
-        dprintf("state:  %02X %02X", keyboard_report.mods, keyboard_report.reserved);
+        dprintf("state:  mod(%02X) rev(%02X) key", keyboard_report.mods, keyboard_report.reserved);
         for (uint8_t i = 0; i < KEYBOARD_REPORT_KEYS; i++) {
             dprintf(" %02X", keyboard_report.keys[i]);
         }
@@ -157,7 +177,7 @@ uint8_t matrix_scan(void) {
     static uint8_t usb_state = 0;
     if (usb_state != usb_host.getUsbTaskState()) {
         usb_state = usb_host.getUsbTaskState();
-        dprintf("usb_state: %02X\n", usb_state);
+        dprintf("usb_state: %02X\t%s\n", usb_state, usb_state2str(usb_state));
 
         // restore LED state when keyboard comes up
         if (usb_state == USB_STATE_RUNNING) {
