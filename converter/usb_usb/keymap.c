@@ -17,11 +17,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "keymap_common.h"
 
-#include "action_layer.h"
-#include "action_util.h"
-#include "action_code.h"
 
-#if 0
 const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
     /* 0: plain Qwerty without layer switching
      *         ,---------------. ,---------------. ,---------------.
@@ -53,7 +49,7 @@ const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
 };
 
 const action_t fn_actions[] PROGMEM = {};
-#endif
+
 
 
 /*
@@ -205,7 +201,6 @@ const action_t fn_actions[] PROGMEM = {};
     ),
 
 
-#endif
 /*
  * SpaceFN layout
  * http://geekhack.org/index.php?topic=51069.0
@@ -230,13 +225,13 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * `-----------------------------------------------------------' `-----------' `---------------' `-------'
      */
     [0] = KEYMAP_ALL(
-              F13, F14, F15, F16, F17, F18, F19, F20, F21, F22, F23, FN5,
+              F13, F14, F15, F16, F17, F18, F19, F20, F21, F22, F23, F24,
     ESC,      F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12,           PSCR,SLCK,PAUS,    VOLD,VOLU,MUTE,PWR,     HELP,
-    GRV, 1,   2,   3,   4,   5,   6,   7,   8,   9,   0,   MINS,EQL, JYEN,BSPC,     INS, HOME,PGUP,    NLCK,PSLS,PAST,PMNS,    STOP,AGIN,
-    FN4, Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,   LBRC,RBRC,     BSLS,     DEL, END, PGDN,    P7,  P8,  P9,  PPLS,    MENU,UNDO,
-    FN2,A,   S,   D,   F,   G,   H,   J,   K,   L,   SCLN,QUOT,     NUHS,FN3,                         P4,  P5,  P6,  PCMM,    SLCT,COPY,
+    ESC, 1,   2,   3,   4,   5,   6,   7,   8,   9,   0,   MINS,EQL, JYEN,BSPC,     INS, HOME,PGUP,    NLCK,PSLS,PAST,PMNS,    STOP,AGIN,
+    TAB, Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,   LBRC,RBRC,     BSLS,     DEL, END, PGDN,    P7,  P8,  P9,  PPLS,    MENU,UNDO,
+    LCTL,A,   S,   D,   F,   G,   H,   J,   K,   L,   SCLN,QUOT,     NUHS,ENT,                         P4,  P5,  P6,  PCMM,    SLCT,COPY,
     LSFT,NUBS,Z,   X,   C,   V,   B,   N,   M,   COMM,DOT, SLSH,     RO,  RSFT,          UP,           P1,  P2,  P3,  PEQL,    EXEC,PSTE,
-    LCTL,LALT, LGUI,MHEN,HANJ,     FN0,      HAEN,HENK,KANA,RALT,INS,APP, RCTL,     LEFT,DOWN,RGHT,    P0,       PDOT,PENT,    FIND,CUT
+    LCTL,LGUI,LALT,MHEN,HANJ,     FN0,      HAEN,HENK,KANA,RALT,RGUI,APP, RCTL,     LEFT,DOWN,RGHT,    P0,       PDOT,PENT,    FIND,CUT
     ),
 
     /* 1: SpaceFN
@@ -255,62 +250,17 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [1] = KEYMAP_ALL(
               TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
     TRNS,     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,          TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,    TRNS,
-    TRNS, F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12, TRNS,DEL,      TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
-    TRNS,TRNS,TRNS,ESC, TRNS,TRNS,HOME,PGUP,PGDN, INS, END,SLCK,PAUS,     INS,      TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
-    TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,LEFT,DOWN,UP,RGHT,TRNS,TRNS,     TRNS,TRNS,                        TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
+    GRV, F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12, TRNS,DEL,      TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
+    CAPS,TRNS,TRNS,ESC, TRNS,TRNS,TRNS,HOME,UP,  END, PSCR,SLCK,PAUS,     INS,      TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
+    TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,PGUP,LEFT,DOWN,RGHT,TRNS,TRNS,     TRNS,TRNS,                        TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,SPC, PGDN,GRV, FN1, TRNS,APP,      TRNS,TRNS,          TRNS,         TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
     TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,TRNS,TRNS,    TRNS,     TRNS,TRNS,    TRNS,TRNS
     ),
-
-    /* 2: FN24 layer on magic keyboard
-     * ,-----------------------------------------------------------.
-     * |`  | F1| F2| F3| F4| F5| F6| F7| F8| F9|F10|F11|F12|Delete |
-     * |-----------------------------------------------------------|
-     * |Caps |   |   |Esc|   |   |   |Hom|Up |End|Psc|Slk|Pau|Ins  |
-     * |-----------------------------------------------------------|
-     * |      |   |   |   |   |   |PgU|Lef|Dow|Rig|   |   |        |
-     * |-----------------------------------------------------------|
-     * |        |   |   |   |   |Spc|PgD|`  |~  |   |Men|          |
-     * |-----------------------------------------------------------|
-     * |    |    |    |                        |    |    |    |    |
-     * `-----------------------------------------------------------'
-     */
-    [2] = KEYMAP_ALL(
-              TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
-    TRNS,     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,          TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,    TRNS,
-    TRNS, F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12, TRNS,DEL,      TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
-    TRNS,TRNS,TRNS,ESC, TRNS,TRNS,HOME,PGUP,PGDN, INS, END,SLCK,PAUS,     INS,      TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
-    TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,LEFT,DOWN,UP,RGHT,TRNS,TRNS,     TRNS,TRNS,                        TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
-    TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,SPC, PGDN,GRV, FN1, TRNS,APP,      TRNS,TRNS,          PGUP,         TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
-    TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     HOME,PGDN,END,    TRNS,     TRNS,TRNS,    TRNS,TRNS
-    ),
-};
-
-enum function_id {
-  TAB
 };
 
 const action_t PROGMEM fn_actions[] = {
-  [0] = ACTION_LAYER_TAP_KEY(1, KC_SPACE),
-  [1] = ACTION_MODS_KEY(MOD_LSFT, KC_GRV),    // tilde
-  [2] = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_ESC),    // LCTL/ESC
-  [3] = ACTION_MODS_TAP_KEY(MOD_RCTL, KC_ENT),    // RCTL/Enter
-  // FN4: share TAB and ~ on the same key: https://github.com/tmk/tmk_keyboard/wiki/FAQ-Keymap#esc-and--on-a-key
-  [4] = ACTION_FUNCTION(TAB),
-  [5] = ACTION_LAYER_MOMENTARY(2),
+    [0] = ACTION_LAYER_TAP_KEY(1, KC_SPACE),
+    [1] = ACTION_MODS_KEY(MOD_LSFT, KC_GRV),    // tilde
 };
 
-void action_function(keyrecord_t *record, uint8_t id, uint8_t opt)
-{
-  if(id == TAB){
-  void (*method)(uint8_t) = (record->event.pressed) ? &add_key : &del_key;
-  uint8_t shifted = get_mods() & (MOD_BIT(KC_LSHIFT) | MOD_BIT(KC_RSHIFT));
-
-  if(layer_state == 0)
-    method(shifted ? KC_GRAVE : KC_TAB);
-  else
-    method(shifted ? KC_GRAVE : KC_TAB);
-
-  send_keyboard_report();
-}
-}
+#endif
