@@ -27,7 +27,6 @@ void KBDReportParser::Parse(USBHID *hid, bool is_rpt_id, uint8_t len, uint8_t *b
         buf[1] = buf[9];
         if (buf[9] & 0x01) buf[6] = KC_F23; // eject -> F23
         if (buf[9] & 0x02) buf[7] = KC_F24; // Fn -> F24
-        dprint("Apple A1644: eject -> F23, Fn -> F24\r\n");
     }
 
     // Rollover error
