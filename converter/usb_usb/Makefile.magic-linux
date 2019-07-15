@@ -88,13 +88,15 @@ F_USB ?= $(F_CPU)
 OPT_DEFS += -DINTERRUPT_CONTROL_ENDPOINT
 
 
+# when defined, will disable unnecessary features to the hex file will fit an Arduino Leonardo with USB host shield
+OPT_DEFS += -DLOW_MEM
 
 # Build Options
 #   comment out to disable the options.
 #
 #MOUSEKEY_ENABLE ?= yes	# Mouse keys
 #EXTRAKEY_ENABLE ?= yes	# Media control and System control
-#BOOTMAGIC_ENABLE = yes  # Virtual DIP switch configuration(+1000)
+BOOTMAGIC_ENABLE = yes  # Virtual DIP switch configuration(+1000)
 CONSOLE_ENABLE ?= yes	# Console for debug
 COMMAND_ENABLE ?= yes    # Commands for debug and configuration
 #NKRO_ENABLE ?= yes	# USB Nkey Rollover

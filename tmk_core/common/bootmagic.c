@@ -37,14 +37,17 @@ void bootmagic(void)
         eeconfig_init();
     }
 
+    #ifndef LOW_MEM
     /* bootloader */
     if (bootmagic_scan_key(BOOTMAGIC_KEY_BOOTLOADER)) {
         bootloader_jump();
     }
+    #endif
 
     /* user-defined checks */
     hook_bootmagic();
 
+    #ifndef LOW_MEM
     /* debug enable */
     debug_config.raw = eeconfig_read_debug();
     if (bootmagic_scan_key(BOOTMAGIC_KEY_DEBUG_ENABLE)) {
@@ -87,6 +90,7 @@ void bootmagic(void)
         keymap_config.nkro = !keymap_config.nkro;
     }
     eeconfig_write_keymap(keymap_config.raw);
+    #endif
 
 #ifdef NKRO_ENABLE
     keyboard_nkro = keymap_config.nkro;
@@ -98,10 +102,13 @@ void bootmagic(void)
     if (bootmagic_scan_key(BOOTMAGIC_KEY_DEFAULT_LAYER_1)) { default_layer |= (1<<1); }
     if (bootmagic_scan_key(BOOTMAGIC_KEY_DEFAULT_LAYER_2)) { default_layer |= (1<<2); }
     if (bootmagic_scan_key(BOOTMAGIC_KEY_DEFAULT_LAYER_3)) { default_layer |= (1<<3); }
+    #ifndef LOW_MEM
     if (bootmagic_scan_key(BOOTMAGIC_KEY_DEFAULT_LAYER_4)) { default_layer |= (1<<4); }
     if (bootmagic_scan_key(BOOTMAGIC_KEY_DEFAULT_LAYER_5)) { default_layer |= (1<<5); }
     if (bootmagic_scan_key(BOOTMAGIC_KEY_DEFAULT_LAYER_6)) { default_layer |= (1<<6); }
     if (bootmagic_scan_key(BOOTMAGIC_KEY_DEFAULT_LAYER_7)) { default_layer |= (1<<7); }
+    #endif
+
     if (default_layer) {
         eeconfig_write_default_layer(default_layer);
         default_layer_set((uint32_t)default_layer);

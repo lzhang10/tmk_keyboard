@@ -157,6 +157,7 @@ static void print_eeconfig(void)
     print(".keyboard: "); print_dec(dc.keyboard); print("\n");
     print(".mouse: "); print_dec(dc.mouse); print("\n");
 
+    #ifndef LOW_MEM
     keymap_config_t kc;
     kc.raw = eeconfig_read_keymap();
     print("keymap_config.raw: "); print_hex8(kc.raw); print("\n");
@@ -168,6 +169,7 @@ static void print_eeconfig(void)
     print(".swap_grave_esc: "); print_dec(kc.swap_grave_esc); print("\n");
     print(".swap_backslash_backspace: "); print_dec(kc.swap_backslash_backspace); print("\n");
     print(".nkro: "); print_dec(kc.nkro); print("\n");
+    #endif
 
 #ifdef BACKLIGHT_ENABLE
     backlight_config_t bc;
