@@ -131,7 +131,7 @@ static void command_common_help(void)
 #endif
 
 #ifdef BOOTMAGIC_ENABLE
-          "e:	eeprom\n"
+          "p:	eeprom\n"
 #endif
 
 #ifdef NKRO_ENABLE
@@ -157,7 +157,7 @@ static void print_eeconfig(void)
     print(".keyboard: "); print_dec(dc.keyboard); print("\n");
     print(".mouse: "); print_dec(dc.mouse); print("\n");
 
-    #ifndef LOW_MEM
+#ifndef LOW_MEM
     keymap_config_t kc;
     kc.raw = eeconfig_read_keymap();
     print("keymap_config.raw: "); print_hex8(kc.raw); print("\n");
@@ -169,7 +169,7 @@ static void print_eeconfig(void)
     print(".swap_grave_esc: "); print_dec(kc.swap_grave_esc); print("\n");
     print(".swap_backslash_backspace: "); print_dec(kc.swap_backslash_backspace); print("\n");
     print(".nkro: "); print_dec(kc.nkro); print("\n");
-    #endif
+#endif
 
 #ifdef BACKLIGHT_ENABLE
     backlight_config_t bc;
@@ -204,7 +204,7 @@ static bool command_common(uint8_t code)
             break;
 #endif
 #ifdef BOOTMAGIC_ENABLE
-        case KC_E:
+        case KC_P:
             print("eeconfig:\n");
             print_eeconfig();
             break;

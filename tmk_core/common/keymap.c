@@ -42,6 +42,7 @@ action_t action_for_key(uint8_t layer, keypos_t key)
     switch (keycode) {
         case KC_FN0 ... KC_FN31:
             return keymap_fn_to_action(keycode);
+#ifndef LOW_MEM
 #ifdef BOOTMAGIC_ENABLE
         case KC_CAPSLOCK:
         case KC_LOCKING_CAPS:
@@ -106,6 +107,7 @@ action_t action_for_key(uint8_t layer, keypos_t key)
                 return keycode_to_action(KC_BSLASH);
             }
             return keycode_to_action(KC_BSPACE);
+#endif
 #endif
         default:
             return keycode_to_action(keycode);
