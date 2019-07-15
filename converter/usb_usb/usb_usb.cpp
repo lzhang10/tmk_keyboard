@@ -161,11 +161,13 @@ uint8_t matrix_scan(void) {
 
         matrix_is_mod = true;
 
+        #if 0
         dprintf("state:  mod(%02X) rev(%02X) key", keyboard_report.mods, keyboard_report.reserved);
         for (uint8_t i = 0; i < KEYBOARD_REPORT_KEYS; i++) {
             dprintf(" %02X", keyboard_report.keys[i]);
         }
         dprint("\r\n");
+        #endif
     } else {
         matrix_is_mod = false;
     }

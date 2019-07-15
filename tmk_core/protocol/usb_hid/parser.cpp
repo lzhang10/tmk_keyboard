@@ -6,11 +6,13 @@
 
 void KBDReportParser::Parse(USBHID *hid, bool is_rpt_id, uint8_t len, uint8_t *buf)
 {
+    #if 0
     dprintf("input %d:", hid->GetAddress());
     for (uint8_t i = 0; i < len; i++) {
         dprintf(" %02X", buf[i]);
     }
     dprint("\r\n");
+    #endif
 
     // Apple USB Magic keyboard (Model A1644) (buf[1] == 0x01) has mods byte in buf[1] while buf[0] is always 0x01:
     // input 1: 01 00 00 00 00 00 00 00 00 01
