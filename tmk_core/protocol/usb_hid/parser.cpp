@@ -27,11 +27,16 @@ void KBDReportParser::Parse(USBHID *hid, bool is_rpt_id, uint8_t len, uint8_t *b
         buf[1] = buf[9];
         if (buf[9] & 0x01) buf[6] = KC_F23; // eject -> F23
         if (buf[9] & 0x02) buf[7] = KC_F24; // Fn -> F24
-    } else if (buf[1] == 0x01) {
-        // ignore Cherry 0101010101010101 bug report
-        // https://geekhack.org/index.php?topic=69169.msg2638223#msg2638223
-        dprint("Cherry bug: ignored\r\n");
-        return;
+    }
+
+    // Rollover error
+    // Cherry: 0101010101010101
+    // https://geekhack.org/index.php?topic=69169.msg2638223#msg2638223
+    // Apple:  0000010101010101
+    // https://geekhack.org/index.php?topic=69169.msg2760969#msg2760969
+    if (buf[2] == 0x01) {
+       dprint("Rollover error: ignored\r\n");
+       return;
     }
 
     ::memcpy(&report, buf, sizeof(report_keyboard_t));
