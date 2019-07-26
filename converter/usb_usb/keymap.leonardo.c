@@ -50,7 +50,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     LCTL,LGUI,LALT,MHEN,HANJ,     SPC,      HAEN,HENK,KANA,RALT,RGUI,APP, RCTL,     LEFT,DOWN,RGHT,    P0,       PDOT,PENT,    FIND,CUT
     ),
 
-    /* Modified Qwerty for Apple Magic keyboard
+    /* Modified Qwerty for Apple Magic keyboard under Linux
       - SpaceFN layer
       - LCTRL-ESC dual key
       - RCTRL-Enter dual key
@@ -81,6 +81,24 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
               LCTL,LGUI,LALT,MHEN,HANJ,     FN0,      HAEN,HENK,KANA,RALT,RGUI,APP, RCTL,     LEFT,DOWN,RGHT,    P0,       PDOT,PENT,    FIND,CUT
     ),
 
+    /* Modified Qwerty for Apple Magic keyboard inside VNC under MacOS
+       - SpaceFN layer
+       - LCTRL-ESC dual key
+       - RCTRL-Enter dual key
+       - share TAB and ~ on the same key
+       - Eject (F24) has separate layer
+       - Bottom row (after mapping): L_CTRL, L_ALT, L_SUPER
+    */
+    [3] = KEYMAP_ALL(
+                     F13, F14, F15, F16, F17, F18, F19, F20, F21, F22, F23, F24,
+                     ESC,      F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12,           PSCR,SLCK,PAUS,    VOLD,VOLU,MUTE,PWR,     HELP,
+                     GRV, 1,   2,   3,   4,   5,   6,   7,   8,   9,   0,   MINS,EQL, JYEN,BSPC,     INS, HOME,PGUP,    NLCK,PSLS,PAST,PMNS,    STOP,AGIN,
+                     FN4, Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,   LBRC,RBRC,     BSLS,     DEL, END, PGDN,    P7,  P8,  P9,  PPLS,    MENU,UNDO,
+                     FN2,A,   S,   D,   F,   G,   H,   J,   K,   L,   SCLN,QUOT,     NUHS,FN3,                         P4,  P5,  P6,  PCMM,    SLCT,COPY,
+                     LSFT,NUBS,Z,   X,   C,   V,   B,   N,   M,   COMM,DOT, SLSH,     RO,  RSFT,          UP,           P1,  P2,  P3,  PEQL,    EXEC,PSTE,
+                     LCTL,LGUI,RGUI,MHEN,HANJ,     FN0,      HAEN,HENK,KANA,RALT,RGUI,APP, RCTL,     LEFT,DOWN,RGHT,    P0,       PDOT,PENT,    FIND,CUT
+                     ),
+
     /* SpaceFN
      * ,-----------------------------------------------------------.
      * |`  | F1| F2| F3| F4| F5| F6| F7| F8| F9|F10|F11|F12|Delete |
@@ -94,7 +112,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |    |    |    |                        |    |    |    |    |
      * `-----------------------------------------------------------'
      */
-    [3] = KEYMAP_ALL(
+    [4] = KEYMAP_ALL(
               TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
     TRNS,     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,          TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,    TRNS,
     TRNS, F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12, TRNS,DEL,      TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
@@ -117,7 +135,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |    |    |    |                        |    |    |    |    |
      * `-----------------------------------------------------------'
      */
-    [4] = KEYMAP_ALL(
+    [5] = KEYMAP_ALL(
               TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
     TRNS,     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,          TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,    TRNS,
     TRNS, F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12, TRNS,DEL,      TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
@@ -133,12 +151,12 @@ enum function_id {
 };
 
 const action_t PROGMEM fn_actions[] = {
-  [0] = ACTION_LAYER_TAP_KEY(3, KC_SPACE),    // FN0: SpaceFN
+  [0] = ACTION_LAYER_TAP_KEY(4, KC_SPACE),    // FN0: SpaceFN
   [1] = ACTION_MODS_KEY(MOD_LSFT, KC_GRV),    // FN1: tilde
   [2] = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_ESC),// FN2: LCTL/ESC dual key
   [3] = ACTION_MODS_TAP_KEY(MOD_RCTL, KC_ENT),// FN3: RCTL/Enter dual key
   [4] = ACTION_FUNCTION(TAB),                 // FN4: share TAB and ~ on the same key: https://github.com/tmk/tmk_keyboard/wiki/FAQ-Keymap#esc-and--on-a-key
-  [5] = ACTION_LAYER_MOMENTARY(4),            // FN5: Eject key on magic keyboard
+  [5] = ACTION_LAYER_MOMENTARY(5),            // FN5: Eject key on magic keyboard
   [6] = ACTION_MODS_TAP_KEY(MOD_LSFT, KC_TAB),// FN6: LSHIFT-TAB dual key (kinesis adv2)
 };
 
