@@ -69,6 +69,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /* Modified Query for Kinesis Advantage 2
        - SpaceFN
+       - LSHIFT-TAB dual key
     */
     [2] = KEYMAP_ALL(
               F13, F14, F15, F16, F17, F18, F19, F20, F21, F22, F23, F24,
@@ -76,7 +77,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
               GRV, 1,   2,   3,   4,   5,   6,   7,   8,   9,   0,   MINS,EQL, JYEN,BSPC,     INS, HOME,PGUP,    NLCK,PSLS,PAST,PMNS,    STOP,AGIN,
               TAB, Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,   LBRC,RBRC,     BSLS,     DEL, END, PGDN,    P7,  P8,  P9,  PPLS,    MENU,UNDO,
               CAPS,A,   S,   D,   F,   G,   H,   J,   K,   L,   SCLN,QUOT,     NUHS,ENT,                         P4,  P5,  P6,  PCMM,    SLCT,COPY,
-              LSFT,NUBS,Z,   X,   C,   V,   B,   N,   M,   COMM,DOT, SLSH,     RO,  RSFT,          UP,           P1,  P2,  P3,  PEQL,    EXEC,PSTE,
+              FN6,NUBS,Z,   X,   C,   V,   B,   N,   M,   COMM,DOT, SLSH,     RO,  RSFT,          UP,           P1,  P2,  P3,  PEQL,    EXEC,PSTE,
               LCTL,LGUI,LALT,MHEN,HANJ,     FN0,      HAEN,HENK,KANA,RALT,RGUI,APP, RCTL,     LEFT,DOWN,RGHT,    P0,       PDOT,PENT,    FIND,CUT
     ),
 
@@ -156,6 +157,7 @@ const action_t PROGMEM fn_actions[] = {
   [3] = ACTION_MODS_TAP_KEY(MOD_RCTL, KC_ENT),// FN3: RCTL/Enter dual key
   [4] = ACTION_FUNCTION(TAB),                 // FN4: share TAB and ~ on the same key: https://github.com/tmk/tmk_keyboard/wiki/FAQ-Keymap#esc-and--on-a-key
   [5] = ACTION_LAYER_MOMENTARY(5),            // FN5: Eject key on magic keyboard
+  [6] = ACTION_MODS_TAP_KEY(MOD_LSFT, KC_TAB),// FN6: LSHIFT-TAB dual key (kinesis adv2)
 };
 
 void action_function(keyrecord_t *record, uint8_t id, uint8_t opt)
