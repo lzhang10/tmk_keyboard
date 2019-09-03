@@ -105,9 +105,9 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |-----------------------------------------------------------|
      * |Caps |   |   |Esc|   |   |   |Hom|Up |End|Psc|Slk|Pau|Ins  |
      * |-----------------------------------------------------------|
-     * |      |   |   |   |   |   |PgU|Lef|Dow|Rig|   |   |        |
+     * |      |   |   |   |   | |Lef|Dow|Up|Rig||   |        |
      * |-----------------------------------------------------------|
-     * |        |   |   |   |   |Spc|PgD|`  |~  |   |Men|          |
+     * |        |   |   |   |   ||BSPC| DEL |   |   |Men|          |
      * |-----------------------------------------------------------|
      * |    |    |    |                        |    |    |    |    |
      * `-----------------------------------------------------------'
@@ -118,7 +118,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TRNS, F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12, TRNS,DEL,      TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
     TRNS,TRNS,TRNS,ESC, TRNS,TRNS,HOME,PGUP,PGDN, PENT, END,SLCK,PAUS,     INS,      TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,LEFT,DOWN,UP,RGHT,TRNS,TRNS,     TRNS,TRNS,                        TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
-    TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,SPC, PGDN,GRV, FN1, TRNS,APP,      TRNS,TRNS,          TRNS,         TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
+    TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,SPC, BSPC,DEL, TRNS, TRNS,APP,      TRNS,TRNS,          TRNS,         TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
     TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,TRNS,TRNS,    TRNS,     TRNS,TRNS,    TRNS,TRNS
     ),
 
