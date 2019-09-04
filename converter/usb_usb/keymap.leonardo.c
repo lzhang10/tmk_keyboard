@@ -103,7 +103,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ,-----------------------------------------------------------.
      * |`  | F1| F2| F3| F4| F5| F6| F7| F8| F9|F10|F11|F12|Delete |
      * |-----------------------------------------------------------|
-     * |Caps |   |   |Esc|   |   |   |Hom|Up |End|Psc|Slk|Pau|Ins  |
+     * |Caps |   |   |Esc|   |   |   |Hom|Up |Down|C+A+H|End|Pau|Ins  |
      * |-----------------------------------------------------------|
      * |      |   |   |   |   | |Lef|Dow|Up|Rig||   |        |
      * |-----------------------------------------------------------|
@@ -116,7 +116,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
               TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
     TRNS,     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,          TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,    TRNS,
     TRNS, F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12, TRNS,DEL,      TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
-    TRNS,TRNS,TRNS,ESC, TRNS,TRNS,HOME,PGUP,PGDN, PENT, END,SLCK,PAUS,     INS,      TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
+    TRNS,TRNS,TRNS,ESC, TRNS,TRNS,HOME,PGUP,PGDN, FN7, END,SLCK,PAUS,     INS,      TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,LEFT,DOWN,UP,RGHT,TRNS,TRNS,     TRNS,TRNS,                        TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,SPC, BSPC,DEL, TRNS, TRNS,APP,      TRNS,TRNS,          TRNS,         TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
     TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,TRNS,TRNS,    TRNS,     TRNS,TRNS,    TRNS,TRNS
@@ -158,6 +158,7 @@ const action_t PROGMEM fn_actions[] = {
   [4] = ACTION_FUNCTION(TAB),                 // FN4: share TAB and ~ on the same key: https://github.com/tmk/tmk_keyboard/wiki/FAQ-Keymap#esc-and--on-a-key
   [5] = ACTION_LAYER_MOMENTARY(5),            // FN5: Eject key on magic keyboard
   [6] = ACTION_MODS_TAP_KEY(MOD_LSFT, KC_TAB),// FN6: LSHIFT-TAB dual key (kinesis adv2)
+  [7] = ACTION_MODS_KEY(MOD_LALT|MOD_LCTL, KC_H),    // FN7: CTRL+SHIFT+H (spaceFN+o)
 };
 
 void action_function(keyrecord_t *record, uint8_t id, uint8_t opt)
