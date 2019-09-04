@@ -105,7 +105,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |-----------------------------------------------------------|
      * |Caps |   |   |Esc|   |   |   |Hom|Up |Down|C+A+H|End|Pau|Ins  |
      * |-----------------------------------------------------------|
-     * |      |   |   |   |   | |Lef|Dow|Up|Rig||   |        |
+     * |A-TAB |   |   |   |   | |Lef|Dow|Up|Rig||   |        |
      * |-----------------------------------------------------------|
      * |        |   |   |   |   ||BSPC| DEL |   |   |Men|          |
      * |-----------------------------------------------------------|
@@ -117,7 +117,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TRNS,     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,          TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,    TRNS,
     TRNS, F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12, TRNS,DEL,      TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
     TRNS,TRNS,TRNS,ESC, TRNS,TRNS,HOME,PGUP,PGDN, FN7, END,SLCK,PAUS,     INS,      TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
-    TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,LEFT,DOWN,UP,RGHT,TRNS,TRNS,     TRNS,TRNS,                        TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
+    FN8,TRNS,TRNS,TRNS,TRNS,TRNS,LEFT,DOWN,UP,RGHT,TRNS,TRNS,     TRNS,TRNS,                        TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,SPC, BSPC,DEL, TRNS, TRNS,APP,      TRNS,TRNS,          TRNS,         TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
     TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,TRNS,TRNS,    TRNS,     TRNS,TRNS,    TRNS,TRNS
     ),
@@ -151,14 +151,15 @@ enum function_id {
 };
 
 const action_t PROGMEM fn_actions[] = {
-  [0] = ACTION_LAYER_TAP_KEY(4, KC_SPACE),    // FN0: SpaceFN
-  [1] = ACTION_MODS_KEY(MOD_LSFT, KC_GRV),    // FN1: tilde
-  [2] = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_ESC),// FN2: LCTL/ESC dual key
-  [3] = ACTION_MODS_TAP_KEY(MOD_RCTL, KC_ENT),// FN3: RCTL/Enter dual key
-  [4] = ACTION_FUNCTION(TAB),                 // FN4: share TAB and ~ on the same key: https://github.com/tmk/tmk_keyboard/wiki/FAQ-Keymap#esc-and--on-a-key
-  [5] = ACTION_LAYER_MOMENTARY(5),            // FN5: Eject key on magic keyboard
-  [6] = ACTION_MODS_TAP_KEY(MOD_LSFT, KC_TAB),// FN6: LSHIFT-TAB dual key (kinesis adv2)
-  [7] = ACTION_MODS_KEY(MOD_LALT|MOD_LCTL, KC_H),    // FN7: CTRL+SHIFT+H (spaceFN+o)
+  [0] = ACTION_LAYER_TAP_KEY(4, KC_SPACE),       // FN0: SpaceFN
+  [1] = ACTION_MODS_KEY(MOD_LSFT, KC_GRV),       // FN1: tilde
+  [2] = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_ESC),   // FN2: LCTL/ESC dual key
+  [3] = ACTION_MODS_TAP_KEY(MOD_RCTL, KC_ENT),   // FN3: RCTL/Enter dual key
+  [4] = ACTION_FUNCTION(TAB),                    // FN4: share TAB and ~ on the same key: https://github.com/tmk/tmk_keyboard/wiki/FAQ-Keymap#esc-and--on-a-key
+  [5] = ACTION_LAYER_MOMENTARY(5),               // FN5: Eject key on magic keyboard
+  [6] = ACTION_MODS_TAP_KEY(MOD_LSFT, KC_TAB),   // FN6: LSHIFT-TAB dual key (kinesis adv2)
+  [7] = ACTION_MODS_KEY(MOD_LALT|MOD_LCTL, KC_H),// FN7: CTRL+SHIFT+H (spaceFN+o)
+  [8] = ACTION_MODS_KEY(MOD_LALT, KC_TAB),       // FN8: Alt-TAB (spaceFN+cap)
 };
 
 void action_function(keyrecord_t *record, uint8_t id, uint8_t opt)
