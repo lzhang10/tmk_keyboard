@@ -10,6 +10,6 @@ After programming, use boot magic LSHIFT-RSHIFT plus 0-3 to select the active la
 2: kinesis adv2
 3: magic keyboard for VNC under MacOS
 
-To set default layer, press SPACE+number while plugging the keyboard.
+To set default layer, press SPACE+number while plugging the leonardo USB cable into computer.
 
 use `sudo hid_listen` to see debug messages.

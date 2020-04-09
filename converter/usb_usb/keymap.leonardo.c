@@ -54,6 +54,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       - SpaceFN layer
       - LCTRL-ESC dual key
       - RCTRL-Enter dual key
+      - RSHFT-DEL dual key
       - share TAB and ~ on the same key
       - Eject (F24) has separate layer
     */
@@ -63,7 +64,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     GRV, 1,   2,   3,   4,   5,   6,   7,   8,   9,   0,   MINS,EQL, JYEN,BSPC,     INS, HOME,PGUP,    NLCK,PSLS,PAST,PMNS,    STOP,AGIN,
     FN4, Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,   LBRC,RBRC,     BSLS,     DEL, END, PGDN,    P7,  P8,  P9,  PPLS,    MENU,UNDO,
     FN2,A,   S,   D,   F,   G,   H,   J,   K,   L,   SCLN,QUOT,     NUHS,FN3,                         P4,  P5,  P6,  PCMM,    SLCT,COPY,
-    LSFT,NUBS,Z,   X,   C,   V,   B,   N,   M,   COMM,DOT, SLSH,     RO,  RSFT,          UP,           P1,  P2,  P3,  PEQL,    EXEC,PSTE,
+    LSFT,NUBS,Z,   X,   C,   V,   B,   N,   M,   COMM,DOT, SLSH,     RO,  FN10,          UP,           P1,  P2,  P3,  PEQL,    EXEC,PSTE,
     LCTL,LALT, LGUI,MHEN,HANJ,     FN0,      HAEN,HENK,KANA,RALT,PENT,APP, RCTL,     LEFT,DOWN,RGHT,    P0,       PDOT,PENT,    FIND,CUT
     ),
 
@@ -107,18 +108,19 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |-----------------------------------------------------------|
      * |      |   |   |   |   | |Lef|Dow|Up|Rig||   |        |
      * |-----------------------------------------------------------|
-     * |        |   |   |   |   ||BSPC| DEL |   |   |Men|          |
+     * |        |   |   |   |   ||BSPC| DEL |FN8 | FN9  |Men|          |
      * |-----------------------------------------------------------|
      * |    |    |    |                        |    |    |    |    |
      * `-----------------------------------------------------------'
+     * SPC + F12: CTRL-ALT-DEL
      */
     [4] = KEYMAP_ALL(
               TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
-    TRNS,     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,          TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,    TRNS,
+    TRNS,     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,FN11,          TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,    TRNS,
     TRNS,  F1,  F2,  F3,  F4,  F5,  F6,   F7, F8,  F9, F10,TRNS,VOLD,VOLU,DEL,      TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
-    TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,HOME,PGUP,PGDN, FN7, END,SLCK,PAUS,     INS,      TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
+    TRNS,TRNS,FN8,TRNS,FN9,TRNS,HOME,PGUP,PGDN, FN7, END,SLCK,PAUS,     INS,      TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
     TRNS, F14, F15, F16, F17, F18,LEFT,DOWN,UP,RGHT,TRNS,TRNS,     TRNS,TRNS,                        TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
-    TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,SPC, BSPC,DEL, TRNS, TRNS,APP,      TRNS,TRNS,          TRNS,         TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
+    TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,SPC, BSPC,DEL, FN8, FN9,APP,      TRNS,TRNS,          TRNS,         TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
     TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,TRNS,TRNS,    TRNS,     TRNS,TRNS,    TRNS,TRNS
     ),
 
@@ -159,6 +161,10 @@ const action_t PROGMEM fn_actions[] = {
   [5] = ACTION_LAYER_MOMENTARY(5),            // FN5: Eject key on magic keyboard
   [6] = ACTION_MODS_TAP_KEY(MOD_LSFT, KC_TAB),// FN6: LSHIFT-TAB dual key (kinesis adv2)
   [7] = ACTION_MODS_KEY(MOD_LALT|MOD_LCTL, KC_H),    // FN7: CTRL+SHIFT+H (spaceFN+o)
+  [8] = ACTION_MODS_KEY(MOD_LCTL, KC_PGUP),    // FN8: CTRL+PgUp (spaceFN+,)
+  [9] = ACTION_MODS_KEY(MOD_LCTL, KC_PGDN),    // FN9: CTRL+PgDn (spaceFN+.)
+  [10] = ACTION_MODS_TAP_KEY(MOD_RSFT, KC_DEL),// FN10: RSHIFT/DEL dual key
+  [11] = ACTION_MODS_KEY(MOD_LALT|MOD_LCTL, KC_DEL),    // FN11: CTRL+ALT+DEL
 };
 
 void action_function(keyrecord_t *record, uint8_t id, uint8_t opt)
