@@ -113,13 +113,14 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |    |    |    |                        |    |    |    |    |
      * `-----------------------------------------------------------'
      * SPC + F12: CTRL-ALT-DEL
+     * SPC + TAB (FN12): SHIFT-TAB
      */
     [4] = KEYMAP_ALL(
               TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
     TRNS,     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,FN11,          TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,    TRNS,
     TRNS,  F1,  F2,  F3,  F4,  F5,  F6,   F7, F8,  F9, F10,TRNS,VOLD,VOLU,DEL,      TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
     TRNS,TRNS,FN8,TRNS,FN9,TRNS,HOME,PGUP,PGDN, FN7, END,SLCK,PAUS,     INS,      TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
-    TRNS, F14, F15, F16, F17, F18,LEFT,DOWN,UP,RGHT,TRNS,TRNS,     TRNS,TRNS,                        TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
+    FN12, F14, F15, F16, F17, F18,LEFT,DOWN,UP,RGHT,TRNS,TRNS,     TRNS,TRNS,                        TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,SPC, BSPC,DEL, FN8, FN9,APP,      TRNS,TRNS,          TRNS,         TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
     TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,TRNS,TRNS,    TRNS,     TRNS,TRNS,    TRNS,TRNS
     ),
@@ -165,6 +166,7 @@ const action_t PROGMEM fn_actions[] = {
   [9] = ACTION_MODS_KEY(MOD_LCTL, KC_PGDN),    // FN9: CTRL+PgDn (spaceFN+.)
   [10] = ACTION_MODS_TAP_KEY(MOD_RSFT, KC_DEL),// FN10: RSHIFT/DEL dual key
   [11] = ACTION_MODS_KEY(MOD_LALT|MOD_LCTL, KC_DEL),    // FN11: CTRL+ALT+DEL
+  [12] = ACTION_MODS_KEY(MOD_LSFT, KC_TAB),    // FN11: SHIFT+TAB (spaceFN+TAB)
 };
 
 void action_function(keyrecord_t *record, uint8_t id, uint8_t opt)
