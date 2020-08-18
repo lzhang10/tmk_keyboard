@@ -1,6 +1,12 @@
 git submodule init
 git submodule update
+
+# nixos
 nix-shell
+
+# ubuntu
+sudo apt install -y gcc-avr avr-libc avrdude
+
 make -f Makefile.leonardo
 sleep 3 && make -f Makefile.leonardo program
 

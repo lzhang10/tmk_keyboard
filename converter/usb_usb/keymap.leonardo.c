@@ -100,27 +100,41 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                      LCTL,LGUI,RGUI,MHEN,HANJ,     FN0,      HAEN,HENK,KANA,RALT,PENT,APP, RCTL,     LEFT,DOWN,RGHT,    P0,       PDOT,PENT,    FIND,CUT
                      ),
 
-    /* SpaceFN
-     * ,-----------------------------------------------------------.
-     * |`  | F1| F2| F3| F4| F5| F6| F7| F8| F9|F10|F11|F12|Delete |
-     * |-----------------------------------------------------------|
-     * |Caps |   |   |Esc|   |   |   |Hom|Up |Down|C+A+H|End|Pau|Ins  |
-     * |-----------------------------------------------------------|
-     * |      |   |   |   |   | |Lef|Dow|Up|Rig||   |        |
-     * |-----------------------------------------------------------|
-     * |        |   |   |   |   ||BSPC| DEL |FN8 | FN9  |Men|          |
-     * |-----------------------------------------------------------|
-     * |    |    |    |                        |    |    |    |    |
-     * `-----------------------------------------------------------'
-     * SPC + F12: CTRL-ALT-DEL
-     * SPC + TAB (FN12): SHIFT-TAB
+    /* SpaceFN Layer
+     * SPC + :
+     *
+     * Number row:
+     * 1 - 0: F1 - F10
+     * F12: CTRL-ALT-DEL
+     * TAB (FN12): SHIFT-TAB
+     *
+     * Q ROW:
+     * w: CTRL-PgUp (FN8)
+     * e: F19 (not working)
+     * r: CTRL-PgDn (FN9)
+     * t:
+     * y: HOME
+     * u: Page up
+     * i: page down
+     * o: ALT-L (FN7)
+     * p: End
+     * [: scroll lock
+     * ]: pause
+     * \: Del (insert)
+     *
+     * A ROW:
      */
     [4] = KEYMAP_ALL(
               TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
     TRNS,     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,FN11,          TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,    TRNS,
     TRNS,  F1,  F2,  F3,  F4,  F5,  F6,   F7, F8,  F9, F10,TRNS,VOLD,VOLU,DEL,      TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
-    TRNS,TRNS,FN8,TRNS,FN9,TRNS,HOME,PGUP,PGDN, FN7, END,SLCK,PAUS,     INS,      TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
+
+    TRNS,TRNS,FN8,F19,FN9,F20,HOME,PGUP,PGDN, FN7, END,SLCK,PAUS,     INS,      TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
+/*             W  E   R   T */
+
     FN12, F14, F15, F16, F17, F18,LEFT,DOWN,UP,RGHT,TRNS,TRNS,     TRNS,TRNS,                        TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
+/*        A    S    D    F    G */
+
     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,SPC, BSPC,DEL, FN8, FN9,APP,      TRNS,TRNS,          TRNS,         TRNS,TRNS,TRNS,TRNS,    TRNS,TRNS,
     TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,TRNS,TRNS,    TRNS,     TRNS,TRNS,    TRNS,TRNS
     ),
